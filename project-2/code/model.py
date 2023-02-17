@@ -7,6 +7,7 @@ from fpgrowth_py import fpgrowth
 def trim_songs(song_name: str):
     # remove the "Remastered" kind of text
     song_name = song_name.split('-')[0].strip()
+    song_name = song_name.split('(')[0].strip()
     return song_name
 
 
@@ -53,7 +54,7 @@ class Model(object):
             list_playlists.append(list_tracks)
 
         freq_item_set, rules = fpgrowth(
-            list_playlists, minSupRatio=0.005, minConf=0)
+            list_playlists, minSupRatio=0.01, minConf=0)
 
         self.freq_item_set = freq_item_set
         self.rules = rules
