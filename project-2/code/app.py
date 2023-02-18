@@ -4,8 +4,11 @@ import pickle
 import pandas as pd
 
 app = Flask(__name__)
-app.model = pickle.load(open('model.pkl', 'rb'))
+app.model = pickle.load(open('data/model.pkl', 'rb'))
 
+@app.route('/api/health', methods=['GET'])
+def health():
+    return 'OK'
 
 @app.route('/api/recommend', methods=['POST'])
 def recommend():
