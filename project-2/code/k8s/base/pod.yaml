@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: project2-ml-zz229
+spec:
+  containers:
+    - name: ml
+      image: crinstaniev/ml:latest
+      imagePullPolicy: Always
+      volumeMounts:
+        - name: pv
+          mountPath: /app/data
+      resources:
+        limits:
+          memory: "1Gi"
+          cpu: "100m"
+  restartPolicy: OnFailure
+  volumes:
+    - name: pv
+      persistentVolumeClaim:
+        claimName: project2-pvc-zz229

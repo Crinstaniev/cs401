@@ -3,6 +3,7 @@ resources:
   - pvc.yaml
   - service.yaml
   - pod.yaml
+  - deployment.yaml
 
 commonLabels:
   app: recommendation-system

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project2-api-zz229
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: project2-api-zz229
+          image: crinstaniev/api:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "1Gi"
+              cpu: "100m"
+          ports:
+            - containerPort: 30510
+          volumeMounts:
+            - name: pv
+              mountPath: /app/data
+      restartPolicy: Always
+      volumes:
+        - name: pv
+          persistentVolumeClaim:
+            claimName: project2-pvc-zz229
