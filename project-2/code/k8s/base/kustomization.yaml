@@ -7,6 +7,9 @@ resources:
 commonLabels:
   app: recommendation-system
 
+commonAnnotations:
+  app: zz229-recommendation-system
+
 configMapGenerator:
 - name: recommendation-system-config
   env: config.properties
