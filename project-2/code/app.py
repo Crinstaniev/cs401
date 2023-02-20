@@ -9,6 +9,7 @@ app = Flask(__name__)
 model_not_loaded = True
 while model_not_loaded:
     try:
+        print('[API-INFO] loading model')
         app.model = pickle.load(open('data/model.pkl', 'rb'))
         model_not_loaded = False
     except:
