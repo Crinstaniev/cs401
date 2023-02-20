@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: project2-app-zz229
+spec:
+  project: zz229-project
+  source:
+    repoURL: "ssh://git@github.com/crinstaniev/cs401.git"
+    path: project-2/code/k8s/base
+    targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: zz229
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Replace=true
+  postSync:
+  resources:
+    - kind: Pod
+      name: project2-ml-zz229
+      namespace: zz229
+      action: restart
+    - kind: Deployment
+      name: project2-api-zz229
+      namespace: zz229
+      action: restart
