@@ -17,6 +17,8 @@ while model_not_loaded:
               '[API-INFO] error loading model')
         time.sleep(1)
 
+print(time.strftime('%Y-%m-%d %H:%M:%S'), f"[API-INFO] model loaded")
+
 
 @app.route('/api/health', methods=['GET'])
 def health():

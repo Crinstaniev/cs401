@@ -10,13 +10,13 @@ run:
 	flask run --port=30510
 
 build-image:
-	docker buildx build --platform linux/amd64 --file docker/api.dockerfile --tag crinstaniev/api:v0.0.1 --tag crinstaniev/api:latest .
-	docker buildx build --platform linux/amd64 --file docker/ml.dockerfile --tag crinstaniev/ml:v0.0.1 --tag crinstaniev/ml:latest .
+	docker buildx build --platform linux/amd64 --file docker/api.dockerfile --tag crinstaniev/api:v1.0 --tag crinstaniev/api:latest .
+	docker buildx build --platform linux/amd64 --file docker/ml.dockerfile --tag crinstaniev/ml:v1.0 --tag crinstaniev/ml:latest .
 
 push-image:
-	docker push crinstaniev/api:v0.0.1
+	docker push crinstaniev/api:v1.0
 	docker push crinstaniev/api:latest
-	docker push crinstaniev/ml:v0.0.1
+	docker push crinstaniev/ml:v1.0
 	docker push crinstaniev/ml:latest
 
 data:

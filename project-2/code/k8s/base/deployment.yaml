@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: project2-api-zz229
-        image: crinstaniev/api:latest
+        image: crinstaniev/api:v1.0
         imagePullPolicy: Always
         resources:
           limits:
