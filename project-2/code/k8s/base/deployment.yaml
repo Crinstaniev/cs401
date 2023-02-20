@@ -22,6 +22,8 @@ spec:
         - name: pv
           mountPath: /app/data
       restartPolicy: Always
-
-
+      volumes:
+      - name: pv
+        persistentVolumeClaim:
+          claimName: project2-pvc-zz229
 

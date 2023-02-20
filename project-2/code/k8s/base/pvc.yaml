@@ -5,7 +5,7 @@ metadata:
   namespace: zz229
 spec:
   accessModes:
-    - ReadWriteMany
+  - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
