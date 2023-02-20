@@ -6,5 +6,3 @@ COPY ../model.py model.py
 COPY ../generate_model.py generate_model.py
 ENV ABC=ABC
 CMD ["python3", "generate_model.py"]
-# CMD ["bash"]
-# ENTRYPOINT ["tail", "-f", "/dev/null"]
