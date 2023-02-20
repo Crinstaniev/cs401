@@ -18,12 +18,12 @@ spec:
     syncOptions:
       - Replace=true
   postSync:
-  resources:
-    - kind: Pod
-      name: project2-ml-zz229
-      namespace: zz229
-      action: restart
-    - kind: Deployment
-      name: project2-api-zz229
-      namespace: zz229
-      action: restart
+    resources:
+      - kind: Pod
+        name: project2-ml-zz229
+        namespace: zz229
+        action: restart
+      - kind: Deployment
+        name: project2-api-zz229
+        namespace: zz229
+        action: restart
