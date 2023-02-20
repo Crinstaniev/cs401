@@ -1,5 +1,5 @@
 resources:
-  - pv.yaml
+  # - pv.yaml
   - pvc.yaml
   - service.yaml
   - pod.yaml
