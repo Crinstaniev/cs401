@@ -54,7 +54,7 @@ class Model(object):
             list_playlists.append(list_tracks)
 
         freq_item_set, rules = fpgrowth(
-            list_playlists, minSupRatio=0.01, minConf=0)
+            list_playlists, minSupRatio=0.005, minConf=0)
 
         self.freq_item_set = freq_item_set
         self.rules = rules
