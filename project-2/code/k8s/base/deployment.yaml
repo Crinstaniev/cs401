@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: project2-api-zz229
+  annotations:
+    argocd.argoproj.io/hook: PostSync
 spec:
   replicas: 2
   template:
