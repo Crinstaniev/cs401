@@ -1,9 +1,10 @@
 import unittest
 from pprint import pprint
+import pandas as pd
 
 import requests
 
-CLUSTER_IP = '10.96.244.217'
+CLUSTER_IP = '10.106.208.198'
 
 
 class TestAPI(unittest.TestCase):
@@ -15,12 +16,10 @@ class TestAPI(unittest.TestCase):
 
     def test_recommend(self):
         url = 'http://{}:30510/api/recommend'.format(CLUSTER_IP)
+        songs_list = pd.read_csv(
+            '../data/songs.csv')['track_name'].unique().tolist()
         payload = {
-            "songs": [
-                "1985",
-                "Bohemian Rhapsody",
-                "Yesterday"
-            ]
+            "songs": songs_list
         }
         print('\npalyload: ')
         pprint(payload)
