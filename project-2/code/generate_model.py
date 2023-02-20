@@ -1,26 +1,21 @@
-from model import Model
-import pandas as pd
+import os
 import pickle
 import time
-import os
-from urllib import request
-import json
+
+import pandas as pd
+from model import Model
 
 
 def main():
     # load data from github
     try:
         data_path = os.environ['DATA_PATH']
-        meta_path = os.environ['META_PATH']
+        data_version = os.environ['DATA_VERSION']
         df_playlist = pd.read_csv(data_path)
 
         print('[ML-INFO] data loaded from {}'.format(data_path))
-        print('[ML-INFO] meta loaded from {}'.format(meta_path))
+        print('[ML-INFO] data version: {}'.format(data_version))
 
-        # read version
-        with request.urlopen(meta_path) as f:
-            meta = json.load(f)
-            version = meta['version']
     except:
         print('[ML-INFO] load data error')
         return
@@ -31,7 +26,7 @@ def main():
         mdl.train(df_playlist)
         mdl_with_metadata = dict(
             model=mdl,
-            version=version,
+            version=data_version,
             model_date=time.strftime('%Y-%m-%d %H:%M:%S')
         )
         print('[ML-INFO] model generating success')

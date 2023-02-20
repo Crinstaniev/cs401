@@ -1,10 +1,12 @@
 resources:
-  # - app.yaml
-  - pvc.yaml
-  - service.yaml
-  - pod.yaml
-  - deployment.yaml
-  # - job.yaml
+- pvc.yaml
+- service.yaml
+- pod.yaml
+- deployment.yaml
 
 commonLabels:
   app: recommendation-system
+
+configMapGenerator:
+- name: recommendation-system-config
+  env: config.properties
