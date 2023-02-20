@@ -4,7 +4,10 @@ import pickle
 import pandas as pd
 
 app = Flask(__name__)
-app.model = pickle.load(open('data/model.pkl', 'rb'))
+try:    
+    app.model = pickle.load(open('data/model.pkl', 'rb'))
+except:
+    print('read model error')
 
 @app.route('/api/health', methods=['GET'])
 def health():

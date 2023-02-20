@@ -1,0 +1,8 @@
+resources:
+  - pv.yaml
+  - pvc.yaml
+  - service.yaml
+  - pod.yaml
+
+commonLabels:
+  app: recommendation-system

@@ -1,0 +1,8 @@
+FROM --platform=amd64 python:3.10-slim-buster
+WORKDIR /app
+COPY ../requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+COPY ../model.py model.py
+# COPY ../data/playlist-sample-ds1.csv playlist.csv
+COPY ../generate_model.py generate_model.py
+CMD ["python3", "generate_model.py"]
