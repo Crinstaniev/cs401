@@ -15,9 +15,11 @@ while model_not_loaded:
         print('[API-INFO] error loading model')
         time.sleep(1)
 
+
 @app.route('/api/health', methods=['GET'])
 def health():
-    return 'OK'
+    return jsonify({'status': 'ok'})
+
 
 @app.route('/api/recommend', methods=['POST'])
 def recommend():
@@ -42,6 +44,7 @@ def recommend():
     )
 
     return jsonify(response)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
