@@ -11,5 +11,5 @@ commonAnnotations:
   app: zz229-recommendation-system
 
 configMapGenerator:
-- name: recommendation-system-config
+- name: config
   env: config.properties

@@ -6,18 +6,29 @@ metadata:
     argocd.argoproj.io/hook: PostSync
 spec:
   containers:
-    - name: ml
-      image: crinstaniev/ml:latest
-      imagePullPolicy: Always
-      volumeMounts:
-        - name: pv
-          mountPath: /app/data
-      resources:
-        limits:
-          memory: "1Gi"
-          cpu: "100m"
+  - name: ml
+    image: crinstaniev/ml:latest
+    imagePullPolicy: Always
+    volumeMounts:
+    - name: pv
+      mountPath: /app/data
+    resources:
+      limits:
+        memory: "2Gi"
+        cpu: "500m"
+    env:
+    - name: DATA_PATH
+      valueFrom:
+        configMapKeyRef:
+          name: config
+          key: DATA_PATH
+    - name: DATA_VERSION
+      valueFrom:
+        configMapKeyRef:
+          name: config
+          key: DATA_VERSION
   restartPolicy: OnFailure
   volumes:
-    - name: pv
-      persistentVolumeClaim:
-        claimName: project2-pvc-zz229
+  - name: pv
+    persistentVolumeClaim:
+      claimName: project2-pvc-zz229
