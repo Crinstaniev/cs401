@@ -2,12 +2,18 @@ from flask import Flask, request, jsonify
 from model import trim_songs
 import pickle
 import pandas as pd
+import time
 
 app = Flask(__name__)
-try:    
-    app.model = pickle.load(open('data/model.pkl', 'rb'))
-except:
-    print('read model error')
+
+model_not_loaded = True
+while model_not_loaded:
+    try:
+        app.model = pickle.load(open('data/model.pkl', 'rb'))
+        model_not_loaded = False
+    except:
+        print('[API-INFO] error loading model')
+        time.sleep(1)
 
 @app.route('/api/health', methods=['GET'])
 def health():
