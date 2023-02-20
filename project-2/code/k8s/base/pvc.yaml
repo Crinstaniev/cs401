@@ -2,11 +2,15 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: project2-pvc-zz229
+  namespace: zz229
 spec:
   accessModes:
     - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
-  volumeMode: Filesystem
+  selector:
+    matchLabels:
+      type: local
   volumeName: project2-pv-zz229
+  storageClassName: standard
