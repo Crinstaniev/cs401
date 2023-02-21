@@ -27,6 +27,11 @@ spec:
             configMapKeyRef:
               name: config
               key: DATA_VERSION
+        - name: UPDATE_TIMESTAMP
+          valueFrom:
+            configMapKeyRef:
+              name: config
+              key: UPDATE_TIMESTAMP
   restartPolicy: OnFailure
   volumes:
     - name: pv

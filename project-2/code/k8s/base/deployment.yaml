@@ -16,6 +16,12 @@ spec:
             limits:
               memory: "2Gi"
               cpu: "500m"
+          env:
+            - name: UPDATE_TIMESTAMP
+              valueFrom:
+                configMapKeyRef:
+                  name: config
+                  key: UPDATE_TIMESTAMP
           ports:
             - containerPort: 30510
           volumeMounts:
