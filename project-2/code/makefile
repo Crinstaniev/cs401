@@ -42,7 +42,7 @@ clear-logs:
 push:
 	@echo "Pushing to git..."
 	@git add .
-	@git commit -m "Update"
+	@git commit -m "Update at `date +"%Y-%m-%d %H:%M:%S"`"
 	@git push
 	@echo "Pushed to git."
 
