@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: project2-service-zz229
 spec:
+  tyle: LoadBalancer
   ports:
     - port: 30510
       targetPort: 30510
+      protocol: TCP
+      name: http
