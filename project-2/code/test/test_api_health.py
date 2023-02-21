@@ -22,8 +22,6 @@ if not os.path.exists(LOG_FOLDER_PATH):
 
 LOG_FILE_PATH = os.path.abspath(LOG_FOLDER_PATH) + "/" + LOG_NAME
 
-# print cluster ip
-
 # create log file
 with open(LOG_FILE_PATH, "w") as f:
     f.write("")
@@ -49,9 +47,16 @@ def test_api_status():
                 "time": time.strftime('%Y-%m-%d %H:%M:%S')
             }
 
-        # logging test status with time, response and how many seconds left
-        print(time.strftime('%Y-%m-%d %H:%M:%S'), json_data,
-              "Time left: {}".format(int(TEST_DURATION - (time.time() - start_time))))
+        status = json_data.get("status", "unknown")
+
+        if status == "online":
+            # green logs
+            print(f"[{int(time.time() - start_time)}/{TEST_DURATION}]",
+                  "\033[92m{}\033[0m".format(json.dumps(json_data)))
+        else:
+            # red logs
+            print(f"[{int(time.time() - start_time)}/{TEST_DURATION}]",
+                  "\033[91m{}\033[0m".format(json.dumps(json_data)))
 
         with open(LOG_FILE_PATH, "a") as f:
             f.write(json.dumps(json_data) + "\n")

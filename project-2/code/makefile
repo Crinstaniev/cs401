@@ -37,3 +37,15 @@ clear-logs:
 		rm -f $$file; \
 	done
 	@echo "Logs cleared."
+
+.PHONY: push-git
+push-git:
+	@echo "Pushing to git..."
+	@git add .
+	@git commit -m "Update"
+	@git push
+	@echo "Pushed to git."
+
+
+.PHONY: push-and-test
+push-and-test: docker test clear-logs
