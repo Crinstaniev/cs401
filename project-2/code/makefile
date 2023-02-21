@@ -3,6 +3,7 @@ DOCKER_USERNAME=crinstaniev
 IMAGE1_NAME=api
 IMAGE2_NAME=ml
 TAG=latest
+LOG_DIR=logs
 
 .PHONY: build-image1
 build-image1:
@@ -22,3 +23,17 @@ push-image2:
 
 .PHONY: docker 
 docker: build-image1 build-image2 push-image1 push-image2
+
+.PHONY: test clear-logs
+test:
+	@echo "Running test..."
+	@python -m pytest -s
+	@echo "Test completed."
+
+clear-logs:
+	@echo "Clearing logs..."
+	@for file in $(LOG_DIR)/*; do \
+		echo "Deleting $$file..."; \
+		rm -f $$file; \
+	done
+	@echo "Logs cleared."

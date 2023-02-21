@@ -70,7 +70,12 @@ def get_recommendation():
 # api
 @app.route('/api/health', methods=['GET'])
 def health():
-    return jsonify({'status': 'ok'})
+    return jsonify({
+        'status': 'online',
+        'version': app.model['version'],
+        'model_date': app.model['model_date'],
+        'time': time.strftime('%Y-%m-%d %H:%M:%S')
+    })
 
 
 @app.route('/api/recommend', methods=['POST'])

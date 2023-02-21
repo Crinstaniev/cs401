@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 frontend/node_modules
 data
+logs
