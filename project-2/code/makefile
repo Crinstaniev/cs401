@@ -47,4 +47,4 @@ push:
 	@echo "Pushed to git."
 
 .PHONY: push-and-test
-push-and-test: docker test clear-logs
+push-and-test: docker push test

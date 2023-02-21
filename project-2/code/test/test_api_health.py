@@ -8,7 +8,7 @@ import os
 command = "kubectl get service project2-service-zz229 -n zz229 -o jsonpath='{.spec.clusterIP}'"
 output = subprocess.check_output(command, shell=True)
 
-TEST_DURATION = 60
+TEST_DURATION = 600
 CLUSTER_IP = output.decode("utf-8").strip()
 API_URL = "http://{}:30510/api/health".format(CLUSTER_IP)
 TIMESTAMP = time.strftime('%Y-%m-%d_%H-%M-%S')
