@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Song Recommendation App</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Song Recommendation App</h1>
+      </div>
+      <div class="content">
+        <div class="recommended-songs">
+          <h2>Recommended Songs</h2>
+          <ul>
+            {% for song in recommended_songs %}
+            <li>{{ song }}</li>
+            {% endfor %}
+          </ul>
+          <form action="{{ url_for('index') }}">
+            <button type="submit">Back</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

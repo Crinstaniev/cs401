@@ -9,21 +9,20 @@ spec:
   template:
     spec:
       containers:
-      - name: project2-api-zz229
-        image: crinstaniev/api:v1.0
-        imagePullPolicy: Always
-        resources:
-          limits:
-            memory: "2Gi"
-            cpu: "500m"
-        ports:
-        - containerPort: 30510
-        volumeMounts:
-        - name: pv
-          mountPath: /app/data
+        - name: project2-api-zz229
+          image: crinstaniev/api:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "500m"
+          ports:
+            - containerPort: 30510
+          volumeMounts:
+            - name: pv
+              mountPath: /app/data
       restartPolicy: Always
       volumes:
-      - name: pv
-        persistentVolumeClaim:
-          claimName: project2-pvc-zz229
-
+        - name: pv
+          persistentVolumeClaim:
+            claimName: project2-pvc-zz229

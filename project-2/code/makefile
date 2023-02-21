@@ -1,35 +1,24 @@
-dev: build run
-docker: build-image push-image
+DOCKER_REGISTRY=docker.io
+DOCKER_USERNAME=crinstaniev
+IMAGE1_NAME=api
+IMAGE2_NAME=ml
+TAG=latest
 
-build:
-	/Users/crinstaniev/Documents/SPRING2023/CS401/project-2/code/venv/bin/python generate_model.py
+.PHONY: build-image1
+build-image1:
+	docker buildx build --platform linux/amd64 --file docker/api.dockerfile --tag $(DOCKER_REGISTRY)/$(DOCKER_USERNAME)/$(IMAGE1_NAME):$(TAG) .
 
-run:
-	export FLASK_APP=restapi_server.py
-	export FLASK_ENV=development
-	flask run --port=30510
+.PHONY: build-image2
+build-image2:
+	docker buildx build --platform linux/amd64 --file docker/ml.dockerfile --tag $(DOCKER_REGISTRY)/$(DOCKER_USERNAME)/$(IMAGE2_NAME):$(TAG) .
 
-build-image:
-	docker buildx build --platform linux/amd64 --file docker/api.dockerfile --tag crinstaniev/api:v1.0 --tag crinstaniev/api:latest .
-	docker buildx build --platform linux/amd64 --file docker/ml.dockerfile --tag crinstaniev/ml:v1.0 --tag crinstaniev/ml:latest .
+.PHONY: push-image1
+push-image1:
+	docker push $(DOCKER_REGISTRY)/$(DOCKER_USERNAME)/$(IMAGE1_NAME):$(TAG)
 
-push-image:
-	docker push crinstaniev/api:v1.0
-	docker push crinstaniev/api:latest
-	docker push crinstaniev/ml:v1.0
-	docker push crinstaniev/ml:latest
+.PHONY: push-image2
+push-image2:
+	docker push $(DOCKER_REGISTRY)/$(DOCKER_USERNAME)/$(IMAGE2_NAME):$(TAG)
 
-data:
-	cp model.pkl shared/model.pkl
-	cp data/playlist-sample-ds1.csv shared/playlist-sample-ds1.csv
-
-forward-pods:
-	kubectl port-forward service/service 30510:30510
-
-test:
-	python test/api_test.py
-
-dummy:
-	python dummy_backend.py
-
-.PHONY: data test
+.PHONY: docker 
+docker: build-image1 build-image2 push-image1 push-image2

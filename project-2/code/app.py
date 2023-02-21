@@ -1,10 +1,15 @@
-from flask import Flask, request, jsonify
-from model import trim_songs
 import pickle
-import pandas as pd
 import time
 
-app = Flask(__name__)
+import pandas as pd
+import requests
+from flask import Flask, jsonify, redirect, render_template, request
+from flask_cors import CORS
+
+from model import trim_songs
+
+app = Flask(__name__, template_folder='templates', static_folder='static')
+CORS(app)
 
 model_not_loaded = True
 while model_not_loaded:
@@ -19,7 +24,50 @@ while model_not_loaded:
 
 print(time.strftime('%Y-%m-%d %H:%M:%S'), f"[API-INFO] model loaded")
 
+# ui
 
+songs = []
+
+
+@app.route('/', methods=['GET'])
+def index():
+    return redirect('/ui')
+
+
+@app.route('/ui', methods=['GET'])
+def home():
+    return render_template('index.html')
+
+
+@app.route('/add_song', methods=['POST'])
+def add_song():
+    song = request.form['song']
+    songs.append(song)
+
+    print(songs)
+    return render_template('index.html', songs=songs)
+
+
+@app.route('/get_recommendation', methods=['POST'])
+def get_recommendation():
+    # Call the API to get song recommendation
+    try:
+        api_url = 'http://localhost:30510/api/recommend'
+        payload = {
+            "songs": songs
+        }
+        response = requests.post(api_url, json=payload)
+        recommended_songs = response.json()['tracklist']
+    except:
+        recommended_songs = ['Error getting recommendation']
+
+    # Clear the list of songs
+    songs.clear()
+
+    return render_template('recommendation.html', recommended_songs=recommended_songs)
+
+
+# api
 @app.route('/api/health', methods=['GET'])
 def health():
     return jsonify({'status': 'ok'})
@@ -51,4 +99,4 @@ def recommend():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=30510)
