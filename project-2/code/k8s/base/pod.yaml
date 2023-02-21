@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: project2-ml-zz229
-  # annotations:
-  #   argocd.argoproj.io/hook: PostSync
+  annotations:
+    argocd.argoproj.io/hook: PostSync
 spec:
   containers:
     - name: ml
@@ -27,11 +27,11 @@ spec:
             configMapKeyRef:
               name: config
               key: DATA_VERSION
-        - name: UPDATE_TIMESTAMP
-          valueFrom:
-            configMapKeyRef:
-              name: config
-              key: UPDATE_TIMESTAMP
+        # - name: UPDATE_TIMESTAMP
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: config
+        #       key: UPDATE_TIMESTAMP
   restartPolicy: OnFailure
   volumes:
     - name: pv
