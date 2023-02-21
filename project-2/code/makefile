@@ -27,6 +27,9 @@ forward-pods:
 	kubectl port-forward service/service 30510:30510
 
 test:
-	python -m unittest -v test/api_test.py
+	python test/api_test.py
+
+dummy:
+	python dummy_backend.py
 
 .PHONY: data test
