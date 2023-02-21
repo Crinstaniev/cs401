@@ -50,7 +50,7 @@ def test_api_status():
 
         if status == "online":
             # green logs
-            print(f"[{int(time.time() - start_time)}/{TEST_DURATION}]",
+            print(f"[{int(time.time() - start_time + 1)}/{TEST_DURATION}]",
                   "\033[92m{}\033[0m".format(json.dumps(json_data)))
         else:
             # red logs
