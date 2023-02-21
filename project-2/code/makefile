@@ -38,13 +38,19 @@ clear-logs:
 	done
 	@echo "Logs cleared."
 
+
+
 .PHONY: push
 push:
+	@echo "Updating timestamp in config.properties..."
+	@echo "UPDATE_TIMESTAMP=`date +"%Y-%m-%d %H:%M:%S"`" > k8s/base/config.properties
+	@echo "Timestamp updated."
 	@echo "Pushing to git..."
 	@git add .
 	@git commit -m "Update at `date +"%Y-%m-%d %H:%M:%S"`"
 	@git push
 	@echo "Pushed to git."
+
 
 .PHONY: push-and-test
 push-and-test: docker push test

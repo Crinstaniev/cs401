@@ -39,7 +39,7 @@ def test_api_status():
 
         try:
             json_data = response.json()
-        except ValueError:
+        except:
             json_data = {
                 "status": "offline",
                 "version": "unknown",
