@@ -1,10 +1,10 @@
+import os
+import subprocess
 import unittest
 from pprint import pprint
 
 import pandas as pd
 import requests
-import os
-import subprocess
 
 
 class TestAPI(unittest.TestCase):
