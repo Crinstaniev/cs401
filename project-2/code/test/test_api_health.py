@@ -35,9 +35,8 @@ def test_api_status():
     start_time = time.time()
 
     while time.time() - start_time < TEST_DURATION:
-        response = requests.get(API_URL)
-
         try:
+            response = requests.get(API_URL, timeout=1)
             json_data = response.json()
         except:
             json_data = {
