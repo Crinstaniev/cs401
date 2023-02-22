@@ -1,3 +1,4 @@
+import os
 import pickle
 import time
 
@@ -11,19 +12,33 @@ from model import trim_songs
 app = Flask(__name__, template_folder='templates', static_folder='static')
 CORS(app)
 
-model_not_loaded = True
-while model_not_loaded:
-    try:
-        print(time.strftime('%Y-%m-%d %H:%M:%S'), f"[API-INFO] loading model")
-        app.model = pickle.load(open('data/model.pkl', 'rb'))
-        model_not_loaded = False
-    except:
+
+def load_model():
+    model_not_loaded = True
+    while model_not_loaded:
+        try:
+            print(time.strftime('%Y-%m-%d %H:%M:%S'),
+                  f"[API-INFO] loading model")
+            app.model = pickle.load(open('data/model.pkl', 'rb'))
+            model_not_loaded = False
+        except:
+            print(time.strftime('%Y-%m-%d %H:%M:%S'),
+                  '[API-INFO] error loading model')
+            time.sleep(1)
+
+    print(time.strftime('%Y-%m-%d %H:%M:%S'), f"[API-INFO] model loaded")
+
+
+def check_model():
+    if os.environ['DATA_VERSION'] != app.model['version']:
         print(time.strftime('%Y-%m-%d %H:%M:%S'),
-              '[API-INFO] error loading model')
-        time.sleep(1)
+              '[API-INFO] model version changed, reloading model')
+        load_model()
+        print(time.strftime('%Y-%m-%d %H:%M:%S'),
+              '[API-INFO] model reloaded')
 
-print(time.strftime('%Y-%m-%d %H:%M:%S'), f"[API-INFO] model loaded")
 
+load_model()
 # ui
 
 songs = []
@@ -70,6 +85,7 @@ def get_recommendation():
 # api
 @app.route('/api/health', methods=['GET'])
 def health():
+    check_model()
     return jsonify({
         'status': 'online',
         'version': app.model['version'],
@@ -80,6 +96,7 @@ def health():
 
 @app.route('/api/recommend', methods=['POST'])
 def recommend():
+    check_model()
     songs = request.json
     mdl = app.model['model']
     version = app.model['version']
