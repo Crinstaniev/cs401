@@ -32,8 +32,15 @@ def draw(data, title):
             plt.axvline(x=i, color='black', ls='--')
             print(
                 f"Status change from {df.loc[i-1, 'status']} to {df.loc[i, 'status']} at timestamp {df.loc[i, 'time']}")
-            plt.text(i, df.loc[i, 'status'],
-                     f"{'online' if df.loc[i, 'status'] == 1 else 'offline'}")
+            plt.text(
+                i, df.loc[i, 'status'], f"{'online' if df.loc[i, 'status'] == 1 else 'offline'}")
+
+        if df.loc[i, 'version'] != df.loc[i-1, 'version']:
+            plt.axvline(x=i, color='red', ls='--')
+            print(
+                f"Version change from {df.loc[i-1, 'version']} to {df.loc[i, 'version']} at timestamp {df.loc[i, 'time']}")
+            plt.text(i, df.loc[i, 'status'] - 0.1,
+                     f"v{df.loc[i, 'version']}", color='red')
 
     plt.title(title)
     plt.savefig('figures/{}.png'.format(data.split('/')[-1].split('.')[0]))

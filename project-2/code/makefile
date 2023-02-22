@@ -38,8 +38,6 @@ clear-logs:
 	done
 	@echo "Logs cleared."
 
-
-
 .PHONY: push
 push:
 	@echo "Pushing to git..."
@@ -50,7 +48,13 @@ push:
 	@git push
 	@echo "Pushed to git."
 
-
-
 .PHONY: push-and-test
 push-and-test: docker push test
+
+.PHONY: bump-commit 
+bump-commit:
+	@echo "Pushing to git..."
+	# set UPDATE_TIMESTAMP to current time in format yyyy-mm-dd HH:MM:SS
+	@sed -i.bak "s/UPDATE_TIMESTAMP=.*/UPDATE_TIMESTAMP=`date +"%Y-%m-%d	%H:%M:%S"`/" k8s/base/config.properties
+	@git add .
+	@git commit -a
