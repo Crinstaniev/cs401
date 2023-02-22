@@ -58,3 +58,7 @@ bump-commit:
 	@sed -i.bak "s/UPDATE_TIMESTAMP=.*/UPDATE_TIMESTAMP=`date +"%Y-%m-%d	%H:%M:%S"`/" k8s/base/config.properties
 	@git add .
 	@git commit -a
+
+.PHONY: vis 
+vis:
+	python visualization_code/plot.py
