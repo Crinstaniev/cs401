@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.10.11)  22 FEB 2023 20:31
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.10.11)  22 FEB 2023 20:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -310,14 +310,21 @@ LaTeX Info: Redefining \nameref on input line 24.
 
  [1
 
-] [1]
+]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 88.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 88.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 88.
+ [1]
 File: ../code/figures/modify_replica_num.png Graphic file (type bmp)
 <../code/figures/modify_replica_num.png>
  [2]
 File: ../code/figures/update_code.png Graphic file (type bmp)
 <../code/figures/update_code.png>
 
-Overfull \hbox (4.60548pt too wide) in paragraph at lines 142--143
+Overfull \hbox (4.60548pt too wide) in paragraph at lines 145--146
 \TU/lmtt/m/n/12 playlist-sample-ds1.csv \TU/lmr/m/n/12 to \TU/lmtt/m/n/12 playlist-sample-ds2.csv\TU/lmr/m/n/12 , and bump the data
  []
 
@@ -328,12 +335,12 @@ Package rerunfilecheck Info: File `project2-report-zz229.out' has not changed.
 (rerunfilecheck)             Checksum: 0916FA1D32622AF22B76F5AB356FE30A;701.
  ) 
 Here is how much of TeX's memory you used:
- 9521 strings out of 476179
- 150817 string characters out of 5809543
- 470980 words of memory out of 5000000
- 30170 multiletter control sequences out of 15000+600000
- 469675 words of font info for 36 fonts, out of 8000000 for 9000
+ 9542 strings out of 476179
+ 151042 string characters out of 5809543
+ 471980 words of memory out of 5000000
+ 30183 multiletter control sequences out of 15000+600000
+ 472411 words of font info for 45 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 60i,11n,64p,437b,395s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 60i,11n,64p,437b,397s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on project2-report-zz229.xdv (5 pages, 62252 bytes).
+Output written on project2-report-zz229.xdv (5 pages, 63956 bytes).

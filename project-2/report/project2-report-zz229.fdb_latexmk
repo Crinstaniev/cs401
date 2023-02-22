@@ -1,15 +1,24 @@
 # Fdb version 3
-["xdvipdfmx"] 1677069078 "project2-report-zz229.xdv" "project2-report-zz229.pdf" "project2-report-zz229" 1677069078
-  "project2-report-zz229.xdv" 1677069078 62252 9278c746203ccfc8da835fecd6c09e4f "xelatex"
+["xdvipdfmx"] 1677069294 "project2-report-zz229.xdv" "project2-report-zz229.pdf" "project2-report-zz229" 1677069295
+  "project2-report-zz229.xdv" 1677069294 63956 7f84b9690b5e286f6e69dab4d82c1d10 "xelatex"
   (generated)
   "project2-report-zz229.pdf"
-["xelatex"] 1677069077 "/Users/crinstaniev/Dev/cs401/project-2/report/project2-report-zz229.tex" "project2-report-zz229.xdv" "project2-report-zz229" 1677069078
+["xelatex"] 1677069294 "/Users/crinstaniev/Dev/cs401/project-2/report/project2-report-zz229.tex" "project2-report-zz229.xdv" "project2-report-zz229" 1677069295
   "../code/figures/modify_replica_num.png" 1677063818 22944 124eba575bf2c2f68f2c1adef05fd5e7 ""
   "../code/figures/update_code.png" 1677063818 26744 76ab759c39b13a4520a1ebb2eb3c6a45 ""
   "../code/figures/update_data.png" 1677063818 21761 bafce1299a085a9ffba0faec8a97617f ""
-  "/Users/crinstaniev/Dev/cs401/project-2/report/project2-report-zz229.tex" 1677069077 6407 9f4a32b80a3ed90b1020b708b0002d31 ""
+  "/Users/crinstaniev/Dev/cs401/project-2/report/project2-report-zz229.tex" 1677069293 6527 1ac19a1c91174a22e9c1cbd176a4b22a ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1136768653 1520 eccf95517727cb11801f4f1aee3a21b4 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1136768653 1300 b62933e007d01cfd073f79b963c01526 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr8.tfm" 1136768653 1292 21c1c5bfeaebccffdb478fd231a0997d ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
   "/usr/local/texlive/2022/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/usr/local/texlive/2022/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty" 1576625341 40635 c40361e206be584d448876bba8a64a3b ""
   "/usr/local/texlive/2022/texmf-dist/tex/generic/bitset/bitset.sty" 1576016050 33961 6b5c75130e435b2bfdb9f480a09a39f9 ""
@@ -62,9 +71,9 @@
   "/usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf" 1646502317 40171 cdab547de63d26590bebb3baff566530 ""
   "/usr/local/texlive/2022/texmf-var/web2c/xetex/xelatex.fmt" 1665445042 5419903 f97ddab83ecaf6fec37d4460d180a490 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "project2-report-zz229.aux" 1677069078 2431 5de4b06f409cc33cdb61e83aed173f9e "xelatex"
-  "project2-report-zz229.out" 1677069078 701 0916fa1d32622af22b76f5ab356fe30a "xelatex"
-  "project2-report-zz229.tex" 1677069077 6407 9f4a32b80a3ed90b1020b708b0002d31 ""
+  "project2-report-zz229.aux" 1677069294 2529 0bcfb62f248177acce2a5f81bdfbcf72 "xelatex"
+  "project2-report-zz229.out" 1677069294 701 0916fa1d32622af22b76f5ab356fe30a "xelatex"
+  "project2-report-zz229.tex" 1677069293 6527 1ac19a1c91174a22e9c1cbd176a4b22a ""
   (generated)
   "project2-report-zz229.aux"
   "project2-report-zz229.log"
