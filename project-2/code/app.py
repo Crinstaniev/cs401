@@ -87,7 +87,7 @@ def get_recommendation():
 def health():
     check_model()
     return jsonify({
-        'status': 'online',
+        'status': 'online!',
         'version': app.model['version'],
         'model_date': app.model['model_date'],
         'time': time.strftime('%Y-%m-%d %H:%M:%S')
