@@ -1,0 +1,12 @@
+project: zz229-project
+source:
+  repoURL: 'https://github.com/Crinstaniev/cs401'
+  path: project-2/code/k8s/base
+  targetRevision: HEAD
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: zz229
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
