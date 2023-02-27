@@ -22,3 +22,8 @@ restart: clean config deploy
 
 requirements:
 	pip freeze > requirements.txt
+
+commit: requirements
+	git add .
+	git commit -a 
+	git push
