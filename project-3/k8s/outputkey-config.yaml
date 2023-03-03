@@ -3,8 +3,8 @@ data:
   REDIS_OUTPUT_KEY: zz229-proj3-output
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-02-27T13:03:03Z"
+  creationTimestamp: "2023-02-28T09:17:41Z"
   name: outputkey
   namespace: zz229
-  resourceVersion: "4570623"
-  uid: 68aa8ced-69b6-490a-b1aa-1f1a67486ace
+  resourceVersion: "4671278"
+  uid: 3f0e7ecc-bcad-4918-81e0-435489201718

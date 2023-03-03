@@ -6,13 +6,29 @@ def handler(input: dict, context: object) -> dict[str, any]:
         key for key in input.keys() if key.startswith("cpu_percent")]
     cpu_percents = [input[key] for key in cpu_percent_keys]
 
-    if not context.env.get("ma"):
-        context.env['ma'] = deque(
+    # environment initialization
+    if not context.env.get("cpu_percent_history"):
+        context.env['cpu_percent_history'] = deque(
             [cpu_percents for _ in range(10)], maxlen=10)
+
+    if not context.env.get("cpu_percent_ma"):
+        context.env['cpu_percent_ma'] = deque(
+            [cpu_percents for _ in range(10)], maxlen=10)
+
+    context.env['cpu_percent_history'].append(cpu_percents)
+
+    # calculate moving average for each cpu
+    cpu_percent_ma = []
+    for i in range(len(cpu_percents)):
+        cpu_percent_ma.append(sum(
+            [cpu_percent_history[i] for cpu_percent_history in context.env['cpu_percent_history']]) / len(context.env['cpu_percent_history']))
+
+    context.env['cpu_percent_ma'].append(cpu_percent_ma)
 
     return dict(
         timestamp=input["timestamp"],
-        cpu_percentages_ma=list(context.env['ma']),
+        cpu_percent_history=list(context.env['cpu_percent_history']),
+        cpu_percent_ma=list(context.env['cpu_percent_ma']),
         cpu_freq_current=input["cpu_freq_current"],
         n_pids=input["n_pids"],
         virtual_memory_used=input["virtual_memory-used"],
