@@ -10,20 +10,20 @@ test:
 
 # Create configmaps
 config:
-	kubectl create configmap pyfile --from-file pyfile=$(PYFILE) --output yaml > k8s/pyfile-config.yaml
+	kubectl create configmap pyfile --from-file pyfile=$(PYFILE) --output yaml > k8s/base/pyfile-config.yaml
 	kubectl create configmap outputkey \
 		--from-literal REDIS_OUTPUT_KEY=$(REDIS_OUTPUT_KEY) \
-		--output yaml > k8s/outputkey-config.yaml
+		--output yaml > k8s/base/outputkey-config.yaml
 
 # Delete configmaps and deployment
 clean:
 	kubectl delete cm pyfile
 	kubectl delete cm outputkey
-	kubectl delete -f k8s/serverless-deployment-course.yaml
+	kubectl delete -f k8s/base/serverless-deployment-course.yaml
 
 # Apply configmaps and deployment
 deploy:
-	kubectl apply -f k8s
+	kubectl apply -k k8s/base
 	
 # Restart deployment
 restart: clean config deploy
@@ -37,7 +37,3 @@ commit: requirements
 	@git add .
 	@git commit -a 
 	@git push
-
-# pytest 
-test:
-	python -m pytest -s -v

@@ -1,0 +1,4 @@
+resources:
+  - outputkey-config.yaml
+  - pyfile-config.yaml
+  - serverless-deployment-course.yaml
