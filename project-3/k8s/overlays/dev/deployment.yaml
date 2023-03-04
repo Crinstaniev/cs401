@@ -57,3 +57,15 @@ spec:
             - containerPort: 31510
               name: http
               protocol: TCP
+          env:
+            - name: REDIS_HOST
+              value: "67.159.94.11"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_INPUT_KEY
+              value: "metrics"
+            - name: REDIS_OUTPUT_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: outputkey
+                  key: REDIS_OUTPUT_KEY

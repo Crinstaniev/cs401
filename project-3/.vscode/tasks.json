@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "bridge-to-kubernetes.resource",
+			"type": "bridge-to-kubernetes.resource",
+			"resource": "zz229-dashboard-proj3-788cf9dbcc",
+			"resourceType": "pod",
+			"ports": [
+				8080
+			],
+			"targetCluster": "kubernetes",
+			"targetNamespace": "zz229",
+			"useKubernetesServiceEnvironmentVariables": false
+		}
+	]
+}

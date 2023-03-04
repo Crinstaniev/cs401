@@ -1,8 +1,8 @@
 import json
-
+import os
 
 def fetch_data_from_redis(r):
-    res = r.get('zz229-proj3-output').decode('utf-8')
+    res = r.get(os.environ.get('REDIS_OUTPUT_KEY')).decode('utf-8')
     res = json.loads(res)
     timestamp = res['timestamp']
     cpu_percent_ma = res['cpu_percent_ma']

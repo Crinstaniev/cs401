@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 31510
 
 # set entrypoint
-ENTRYPOINT ["python", "app.py"]
+ENTRYPOINT ["python", "wsgi.py"]

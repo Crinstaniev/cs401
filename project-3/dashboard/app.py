@@ -1,14 +1,17 @@
+import os
+
 import dash
 import dash_bootstrap_components as dbc
 import pandas as pd
+import plotly.graph_objects as go
 import redis
 from dash import dcc, html
-from utils.helper_functions import fetch_data_from_redis
 from dash.dependencies import Input, Output
-import plotly.graph_objects as go
+from utils.helper_functions import fetch_data_from_redis
 
 app = dash.Dash(__name__)
-r = redis.Redis(host='67.159.94.11', port=6379, db=0)
+r = redis.Redis(host=os.environ.get('REDIS_HOST'),
+                port=os.environ.get('REDIS_PORT'), db=0)
 
 cpu_percent_history = None
 cpu_percent_ma = None
