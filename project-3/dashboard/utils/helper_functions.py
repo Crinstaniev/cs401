@@ -1,5 +1,6 @@
 import json
 
+
 def fetch_data_from_redis(r):
     res = r.get('zz229-proj3-output').decode('utf-8')
     res = json.loads(res)

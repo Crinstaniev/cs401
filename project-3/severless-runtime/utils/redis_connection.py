@@ -5,7 +5,7 @@ import logging
 import json
 
 
-class Input(object):
+class RedisConnection(object):
     def __init__(self, redis_host, redis_port):
         self.redis_host = redis_host
         self.redis_port = redis_port
@@ -24,3 +24,9 @@ class Input(object):
         except:
             logging.error('fetch metrics failed')
         return metrics
+
+    def push_output(self, output_key, output):
+        try:
+            self.redis.set(output_key, json.dumps(output))
+        except:
+            logging.error('push output failed')
