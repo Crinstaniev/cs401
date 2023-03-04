@@ -7,8 +7,8 @@ import json
 
 class RedisConnection(object):
     def __init__(self, redis_host, redis_port):
-        # self.redis_host = redis_host
-        self.redis_host = 'localhost'
+        self.redis_host = redis_host
+        # self.redis_host = 'localhost'
         self.redis_port = redis_port
         try:
             logging.info('establishing redis connection')

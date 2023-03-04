@@ -10,7 +10,7 @@ DOCKERFILE_PATH_2 = serverless-runtime
 
 # Docker image tags
 DOCKER_IMAGE_TAG_1 = crinstaniev/dashboard:latest
-DOCKER_IMAGE_TAG_2 = crinstaniev/severless:latest
+DOCKER_IMAGE_TAG_2 = crinstaniev/serverless:latest
 
 
 # Run tests

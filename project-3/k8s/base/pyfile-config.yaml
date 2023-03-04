@@ -39,8 +39,8 @@ data:
         )
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-03-04T13:33:05Z"
+  creationTimestamp: "2023-03-04T14:18:20Z"
   name: pyfile
   namespace: zz229
-  resourceVersion: "5179908"
-  uid: 40e045d8-b85d-4717-a958-65544ebc9144
+  resourceVersion: "5183808"
+  uid: 39b2429c-6ed4-4837-b89d-c63bb46da85c

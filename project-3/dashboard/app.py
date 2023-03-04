@@ -19,6 +19,7 @@ n_pids = None
 
 
 def fetch():
+    print('fetching data from redis')
     global r, cpu_percent_history, cpu_percent_ma, cpu_freq, virtual_memory_used, virtual_memory_free, n_pids
     data = fetch_data_from_redis(r)
 
@@ -30,23 +31,25 @@ def fetch():
     virtual_memory_used = data['virtual_memory_used'] / 1024 / 1024
     virtual_memory_free = data['virtual_memory_free'] / 1024 / 1024
     n_pids = data['n_pids']
+    print('data fetched')
 
 
+print('loading layout')
 app.layout = dbc.Container(
     [
         dcc.Interval(id='interval-component',),
-        
+
         dbc.Row([dbc.Col(html.H1("Dashboard", className="text-header"))]),
-        
+
         dbc.Row([dbc.Col(html.H3("CPU History", className="text-header"))]),
         dbc.Row(id='live-update-cpu-component'),
-        
+
         dbc.Row([dbc.Col(html.H3("Virtual Memory Usage", className="text-header"))]),
         dbc.Row(dcc.Graph(id='live-update-memory-component', animate=True)),
-        
+
         dbc.Row([dbc.Col(html.H3("CPU Frequency", className="text-header"))]),
         dbc.Row(dcc.Graph(id='cpu-speed-meter', animate=True)),
-        
+
         dbc.Row([dbc.Col(html.H3("Number of Processes", className="text-header"))]),
         dbc.Row(dcc.Graph(id='live-update-n-pids-component', animate=True))
     ],
@@ -54,11 +57,15 @@ app.layout = dbc.Container(
 )
 
 
+print('loading callbacks')
+
+
 @app.callback(
     Output('live-update-cpu-component', 'children'),
     Input('interval-component', 'n_intervals')
 )
 def update_cpu_graph(n):
+    print('updating cpu graph')
     # make cpu graphs
     fetch()
     global cpu_percent_history, cpu_percent_ma
@@ -92,6 +99,7 @@ def update_cpu_graph(n):
                 dbc.Row(cpu_graphs[5:10], className='g-0'),
                 dbc.Row(cpu_graphs[10:15], className='g-0')]
 
+    print('returning cpu graph')
     return cpu_grid
 
 
@@ -101,6 +109,7 @@ def update_cpu_graph(n):
     [dash.dependencies.Input('interval-component', 'n_intervals')]
 )
 def update_gauge_chart(n):
+    print('updating gauge chart')
     # Get the CPU frequency
     global cpu_freq
     freq = cpu_freq
@@ -124,7 +133,7 @@ def update_gauge_chart(n):
             }
         )
     )
-
+    print('returning gauge chart')
     return fig
 
 
@@ -133,6 +142,7 @@ def update_gauge_chart(n):
     Input('interval-component', 'n_intervals')
 )
 def update_virtual_memory_chart(n):
+    print('updating memory chart')
     # Get the virtual memory usage
     global virtual_memory_used, virtual_memory_free
     # Create the stacked bar chart
@@ -173,7 +183,7 @@ def update_virtual_memory_chart(n):
         bargap=0.15,  # gap between bars of adjacent location coordinates.
         bargroupgap=0.1  # gap between bars of the same location coordinate.
     )
-
+    print('returning memory chart')
     return fig
 
 
@@ -182,6 +192,7 @@ def update_virtual_memory_chart(n):
     Input('interval-component', 'n_intervals')
 )
 def update_n_pids(n):
+    print('updating n_pids chart')
     # Get the CPU frequency
     global n_pids
 
@@ -204,9 +215,11 @@ def update_n_pids(n):
             }
         )
     )
-
+    print('returning n_pids chart')
     return fig
 
 
+print('finished loading callbacks')
+
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=True, host='0.0.0.0', port=31510)

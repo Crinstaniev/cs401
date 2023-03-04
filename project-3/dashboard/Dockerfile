@@ -12,5 +12,7 @@ RUN pip install -r requirements.txt
 # copy source code
 COPY . .
 
+EXPOSE 31510
+
 # set entrypoint
 ENTRYPOINT ["python", "app.py"]
