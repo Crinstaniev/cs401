@@ -34,11 +34,13 @@ try:
     logging.info('usermodule loaded')
 except:
     usermodule = importlib.import_module('usermodule_dummy')
-    logging.error('no usermodule found')
+    logging.info('no usermodule found')
 
 # main loop
 while True:
+    logging.debug('execution loop started')
     # fetch metrics
+    logging.debug('fetching metrics')
     metrics = redis_connection.fetch_metrics()
     logging.debug(metrics)
     # run usermodule's handler function

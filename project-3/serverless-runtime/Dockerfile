@@ -1,7 +1,7 @@
 FROM python:3.10-slim-buster
 
 # set working directory
-WORKDIR /app
+WORKDIR /opt
 
 # copy requirements.txt
 COPY requirements.txt .
@@ -13,4 +13,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # set entrypoint
-ENTRYPOINT ["python", "app.py"]
+ENTRYPOINT ["python", "main.py"]
