@@ -1,9 +1,4 @@
-import redis
 import json
-import time
-
-r = redis.Redis(host='67.159.94.11', port=6379, db=0)
-
 
 def fetch_data_from_redis(r):
     res = r.get('zz229-proj3-output').decode('utf-8')

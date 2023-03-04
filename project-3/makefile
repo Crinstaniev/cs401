@@ -37,3 +37,7 @@ commit: requirements
 	@git add .
 	@git commit -a 
 	@git push
+
+# pytest 
+test:
+	python -m pytest -s -v
